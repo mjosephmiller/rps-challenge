@@ -4,9 +4,14 @@ require 'capybara/dsl'
 Capybara.current_driver
 
 class Game
-  attr_reader :player
+
+  CHOICES = ['rock', 'paper', 'scissors']
   
-  def initialize(player)
+  attr_reader :player
+
+  def initialize(computer = Computer.new, player = Player.new)
+    @computer = computer
     @player = player
+    @choices = []
   end
 end
