@@ -9,7 +9,8 @@ class Game
 
   CHOICES = ['Rock', 'Paper', 'Scissors']
 
-  attr_reader :player, :player_choice, :computer_choice, :winner
+  attr_reader :player, :player_choice, :computer_choice, :winner, :computer, :player
+  attr_accessor :player_choice, :computer_choice, :winner
 
   def initialize(computer = Computer.new, player = Player.new)
     @computer = computer
@@ -17,6 +18,14 @@ class Game
     @player_choice = ""
     @computer_choice = ""
     @winner = []
+  end
+
+  def self.create(computer, player)
+    @game = Game.new(computer, player)
+  end
+
+  def self.instance
+    @game
   end
 
   def add_computer_selection(computer)
@@ -29,34 +38,43 @@ class Game
 
   def compare
    if @player_choice == "Rock" && @computer_choice == "Paper"
-     @winner << @computer
+     @winner = @computer
    elsif @player_choice == "Rock" && @computer_choice == "Scissors"
-     @winner << @player
+     @winner = @player
    elsif @player_choice == "Rock" && @computer_choice == "Rock"
      @winner
    elsif @player_choice == "Paper" && @computer_choice == "Rock"
-     @winner << @player
+     @winner = @player
    elsif @player_choice == "Paper" && @computer_choice == "Paper"
      @winner
    elsif @player_choice == "Paper" && @computer_choice == "scissors"
-     @winner << @computer
+     @winner = @computer
    elsif @player_choice == "scissors" && @computer_choice == "Rock"
-     @winner << @computer
+     @winner = @computer
    elsif @player_choice == "scissors" && @computer_choice == "Paper"
-     @winner << @player
+     @winner = @player
    elsif @player_choice == "scissors" && @computer_choice == "scissors"
      @winner
    end
  end
 
-  def decide_winner
-    if @winner.empty?
-      "We need a rematch"
-    elsif @winner.include?(@computer)
-      "Computer wins"
-    else
-      "#{player.name} wins"
-    end
+  def assign_winners
+    @winner
   end
+
+  def end_game
+    compare
+    assign_winners
+  end
+
+  # def decide_winner
+  #   if @winner.empty?
+  #     "We need a rematch"
+  #   elsif @winner.include?(@computer)
+  #     "Computer wins"
+  #   else
+  #     "#{@player.player_name} wins"
+  #   end
+  # end
 
 end

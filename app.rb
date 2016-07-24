@@ -1,4 +1,7 @@
 require 'sinatra/base'
+require './lib/game.rb'
+require './lib/player.rb'
+require './lib/computer.rb'
 
 class RPS < Sinatra::Base
   enable :sessions
@@ -8,18 +11,31 @@ class RPS < Sinatra::Base
   end
 
   post '/names' do
-    session[:player_1_name] = params[:player_1_name]
-    redirect :play
+    @player = Player.new(params[:player_1_name])
+    @computer = Computer.new
+    @game = Game.create(@computer, @player)
+    redirect '/play'
+  end
+
+  before do
+    @game = Game.instance
   end
 
   get '/play' do
-    @player_1_name = session[:player_1_name]
     erb :play
   end
 
-  get '/choose' do
-    @player_1_name = session[:player_1_name]
-    erb :choose
+  post '/choice' do
+    @game.player.choose(params[:player_choice])
+    @game.computer.make_random_choice
+    @game.add_computer_selection(@game.computer)
+    @game.add_player_selection(@game.player)
+    @game.end_game
+    redirect '/result'
+  end
+
+  get '/result' do
+    erb :result
   end
 
   get '/' do

@@ -1,0 +1,5 @@
+You chose <%= @game.player_choice %>. Computer chose <%= @game.computer_choice %>.
+<% if @game.winner == [] %>
+It's a tie!
+<% else %> <%= @game.winner.player_name %> WINS!
+<% end %>
