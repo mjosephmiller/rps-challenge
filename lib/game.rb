@@ -67,14 +67,4 @@ class Game
     assign_winners
   end
 
-  # def decide_winner
-  #   if @winner.empty?
-  #     "We need a rematch"
-  #   elsif @winner.include?(@computer)
-  #     "Computer wins"
-  #   else
-  #     "#{@player.player_name} wins"
-  #   end
-  # end
-
 end
