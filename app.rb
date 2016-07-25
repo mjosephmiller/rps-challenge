@@ -38,9 +38,6 @@ class RPS < Sinatra::Base
     erb :result
   end
 
-  get '/' do
-    'Hello Rock Paper Scissors!'
-  end
 
 
 
