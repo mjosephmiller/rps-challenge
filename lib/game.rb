@@ -47,13 +47,13 @@ class Game
      @winner = @player
    elsif @player_choice == "Paper" && @computer_choice == "Paper"
      @winner
-   elsif @player_choice == "Paper" && @computer_choice == "scissors"
+   elsif @player_choice == "Paper" && @computer_choice == "Scissors"
      @winner = @computer
-   elsif @player_choice == "scissors" && @computer_choice == "Rock"
+   elsif @player_choice == "Scissors" && @computer_choice == "Rock"
      @winner = @computer
-   elsif @player_choice == "scissors" && @computer_choice == "Paper"
+   elsif @player_choice == "Scissors" && @computer_choice == "Paper"
      @winner = @player
-   elsif @player_choice == "scissors" && @computer_choice == "scissors"
+   elsif @player_choice == "Scissors" && @computer_choice == "Scissors"
      @winner
    end
  end

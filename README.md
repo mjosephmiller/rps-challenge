@@ -1,5 +1,14 @@
 This is my single player web app for the game Rock, Paper, Scissors.
 
+How to download and play:
+
+$ git clone git@github.com:[USERNAME]/rps-challenge.git
+$ cd rps-challenge
+$ bundle
+$ rackup
+
+Checkout the challenge below...
+
 # RPS Challenge
 
 Instructions
