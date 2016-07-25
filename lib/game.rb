@@ -7,7 +7,7 @@ require_relative 'player'
 
 class Game
 
-  CHOICES = ['Rock', 'Paper', 'Scissors']
+  CHOICES = ['Rock', 'Paper', 'Scissors'].freeze
 
   attr_reader :player, :player_choice, :computer_choice, :winner, :computer, :player
   attr_accessor :player_choice, :computer_choice, :winner
